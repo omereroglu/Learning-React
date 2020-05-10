@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+        class APP extends React.Component {
+            state = {
+                name: "Ömer",
+                age: "22"
+            }
+            //onClick handeler
+            handleClick = (e) => {
+                console.log(this.state);
+                //concatenating  surname just for 1 times
+                if(this.state.name!="Ömer EROĞLU"){
+                    this.setState({
+                    name: this.state.name += " EROĞLU"
+                });
+                }
+               
+            }
+            //onMouseOver event handeler gets X and Y position
+            handleMouseOver = (e) => {
+                console.log("Position X: ", e.pageX," Position Y: ", e.pageY);
+               
+            }
+
+            //copy detector
+            handleCopy = (e) => {
+                console.log("Try to be original please!");
+            }
+
+            render(){
+                return(
+
+                    <div className = "app-content" >
+                        <h1> HELLO WORLD AGAIN </h1>
+                        <p> My name is: <b> {this.state.name} </b> and I am { this.state.age} years old </p>
+                        <button onClick = {this.handleClick} > Click Me </button>
+                        <button onMouseOver = {this.handleMouseOver} > Hover me </button>
+                        <p onCopy = {this.handleCopy} > All rights reserved! </p>
+                     </div>
+                )
+               
+            }
+        }
+
+        ReactDOM.render(<APP />, document.getElementById('app'));
+    </script>
+</body>
+</html>
